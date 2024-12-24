@@ -1,16 +1,36 @@
 class Solution(object):
     def twoCitySchedCost(self, costs):
-        diffs = []
+        diff = []
+        res = 0
+
+        for cost_a, cost_b in costs:
+            dif = (cost_b - cost_a)
+            diff.append([dif, cost_a, cost_b])
         
-        for c1, c2 in costs: #iterate through costs
-            diffs.append([c2 - c1, c1, c2]) #calculate differences
-        diffs.sort() #sore the array
-        res = 0 #assign res to 0
-        for i in range(len(diffs)): #iterate over diffs
-            if i < len(diffs) // 2:
-                res += diffs[i][2] #send to city 2
+        diff.sort()
+
+        # if the cost_b - a is less than 0 then go b
+        # if cost cost_b -a is > 0 then go a
+        
+        for i in range(len(diff)):
+            # if i is less than halfway point of lis
+            if i < len(diff) // 2:
+                val = diff[i][2]
+                res += val
             else:
-                res += diffs[i][1] #send to city 1
-        return res #return res
+                res += diff[i][1]
         
+
+        return res
+
+
+
+        
+
+
+        
+
+
+
+
         
