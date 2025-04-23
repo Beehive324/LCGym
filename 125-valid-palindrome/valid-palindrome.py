@@ -1,6 +1,7 @@
 class Solution(object):
     def isPalindrome(self, s):
-        s = re.sub(r'[\W_]', '', s).lower()
+        s = [c.lower() for c in s if c.isalnum()]
+        print(s)
         start = 0
         end = len(s)-1
 
